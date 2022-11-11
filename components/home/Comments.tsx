@@ -35,7 +35,7 @@ const Comments: React.FC<CommentsProps> = ({}) => {
           const date = new Date(comment.timestamp);
           return (
             <div key={comment.id} className="flex flex-col space-y-4 relative">
-              <div className="self-center text-secondary-700 text-sm">
+              <div className="self-center text-secondary-700  text-sm">
                 <span>
                   {date.toLocaleDateString("en-US", {
                     weekday: "long",

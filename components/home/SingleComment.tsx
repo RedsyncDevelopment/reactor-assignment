@@ -16,11 +16,20 @@ const SingleComment: React.FC<SingleCommentProps> = ({
     hour: "2-digit",
     minute: "2-digit",
   });
+
+  // StackOvewflow <3
+  const urlRegex =
+    /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+  const regex = new RegExp(urlRegex);
+
+  // create new text array
+  const text = comment.text.split(regex);
+  console.log(text);
   const childComments = getReplies(comment.id);
 
   return (
     <div className="flex flex-col">
-      <div className="flex space-x-2 pt-4">
+      <div className="flex space-x-4 pt-4">
         <Image
           src={comment.author.picture}
           alt={`Picture of ${comment.author.name}`}
@@ -33,7 +42,17 @@ const SingleComment: React.FC<SingleCommentProps> = ({
             <p className="text-secondary-900 font-semibold">
               {comment.author.name}
             </p>
-            <p className="text-secondary-700">{comment.text}</p>
+            <p className="text-secondary-700">
+              {text.map((line, i) =>
+                line.match(regex) ? (
+                  <a className="text-primary-400 underline" href={line}>
+                    {line}
+                  </a>
+                ) : (
+                  <p>{line}</p>
+                )
+              )}
+            </p>
           </div>
           <div className="flex space-x-2 items-center">
             <div className="text-secondary-700">{time}</div>
