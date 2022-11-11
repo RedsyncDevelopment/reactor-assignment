@@ -7,3 +7,13 @@
     @apply bg-primary-400 scrollbar-none;
   }
 }
+
+@layer components {
+  .comments-section {
+    @apply w-3/4 h-3/4 bg-secondary-200 md:w-3/5 xl:w-1/2 rounded-lg py-4 pl-4 pr-2 md:py-8 md:pl-8 md:pr-4 flex flex-col;
+  }
+
+  .comments-section-scrollbar {
+    @apply h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-[#C7CDD8] scrollbar-thumb-rounded-full;
+  }
+}
