@@ -8,7 +8,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({}) => {
   return (
     <div className="comments-section">
       <div className="comments-section-scrollbar">
-        <div className="pr-2 md:pr-4">
+        <div className="pr-2 pb-8 md:pr-4">
           <Comments />
         </div>
       </div>

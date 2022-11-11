@@ -8,7 +8,7 @@ interface CommentsProps {}
 const Comments: React.FC<CommentsProps> = ({}) => {
   const [comments, setComments] = useState<CommentInterface[]>(COMMENTS);
 
-  // create comments Map with nested children comments
+  // create comments Map with nested comments
   const commentsMap = useMemo(() => {
     const map: any = {};
     if (!comments) return [];
@@ -29,15 +29,29 @@ const Comments: React.FC<CommentsProps> = ({}) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col space-y-6">
       {comments.map((comment) => {
         if (!comment.parent_id) {
+          const date = new Date(comment.timestamp);
           return (
-            <SingleComment
-              getReplies={getReplies}
-              key={comment.id}
-              comment={comment}
-            />
+            <div key={comment.id} className="flex flex-col space-y-4 relative">
+              <div className="self-center text-secondary-700 text-sm">
+                <span>
+                  {date.toLocaleDateString("en-US", {
+                    weekday: "long",
+                  })}
+                  ,{" "}
+                </span>
+                <span>
+                  {date.toLocaleDateString("de-DE", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  })}
+                </span>
+              </div>
+              <SingleComment getReplies={getReplies} comment={comment} />
+            </div>
           );
         }
       })}

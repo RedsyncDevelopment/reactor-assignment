@@ -12,7 +12,12 @@ const SingleComment: React.FC<SingleCommentProps> = ({
   comment,
   getReplies,
 }) => {
+  const time = new Date(comment.timestamp).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   const childComments = getReplies(comment.id);
+
   return (
     <div className="flex flex-col">
       <div className="flex space-x-2 pt-4">
@@ -24,20 +29,26 @@ const SingleComment: React.FC<SingleCommentProps> = ({
           className="rounded-full w-12 h-12 border-[1px] border-white"
         />
         <div className="flex flex-col space-y-2">
-          <div className="bg-white rounded-lg p-6 flex flex-col space-y-2">
+          <div className="bg-white rounded-lg p-6 flex flex-col space-y-2  border-[1px] border-secondary-400">
             <p className="text-secondary-900 font-semibold">
               {comment.author.name}
             </p>
             <p className="text-secondary-700">{comment.text}</p>
           </div>
           <div className="flex space-x-2 items-center">
-            <div className="text-secondary-700">{comment.timestamp}</div>
+            <div className="text-secondary-700">{time}</div>
             <BsDot className="text-secondary-700" />
-            <div className="text-primary-400">Reply</div>
+            <div className="text-primary-400">
+              Reply {childComments && <span>({childComments.length})</span>}
+            </div>
           </div>
         </div>
       </div>
+
       <div className="pl-16">
+        {childComments && (
+          <div className="absolute left-6 w-6 h-10 border-l-2 border-b-2 border-secondary-400 rounded-bl-md" />
+        )}
         {childComments &&
           childComments.length > 0 &&
           childComments.map((comment: any) => (

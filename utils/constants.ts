@@ -37,14 +37,4 @@ export const COMMENTS = [
     text: "Hey guys, here is a nice web for that comoplicated conversion. www.convertunits.com/from/MB/to/GB",
     timestamp: 1626861080278,
   },
-  {
-    id: "5",
-    parent_id: "3",
-    author: {
-      name: "Ines Grah",
-      picture: "/img/ines.jpg",
-    },
-    text: "Zmaj has a point, tho I’d say its about 1000MB in a GB.",
-    timestamp: 414516900000,
-  },
 ];
