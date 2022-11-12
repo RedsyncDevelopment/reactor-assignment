@@ -1,5 +1,6 @@
-import { CommentInterface } from "./../types.d";
-export const COMMENTS: CommentInterface[] = [
+import type { NextApiRequest, NextApiResponse } from "next";
+
+const COMMENTS = [
   {
     id: "1",
     author: {
@@ -49,3 +50,7 @@ export const COMMENTS: CommentInterface[] = [
     timestamp: 414514880000,
   },
 ];
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.status(200).json(COMMENTS);
+}

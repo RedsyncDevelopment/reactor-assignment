@@ -1,12 +1,13 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { CommentInterface } from "../../types";
-import { COMMENTS } from "../../utils/constants";
-import SingleComment from "./SingleComment";
+import ParentComment from "./ParentComment";
 
-interface CommentsProps {}
+interface CommentsProps {
+  comments: CommentInterface[];
+}
 
-const Comments: React.FC<CommentsProps> = ({}) => {
-  const [comments, setComments] = useState<CommentInterface[]>(COMMENTS);
+const Comments: React.FC<CommentsProps> = ({ comments }) => {
+  // console.log(comments);
 
   // create comments Map with nested comments
   const commentsMap = useMemo(() => {
@@ -24,37 +25,22 @@ const Comments: React.FC<CommentsProps> = ({}) => {
     return map;
   }, [comments]);
 
-  const getReplies = (parentId: string): [] => {
+  const getReplies = (parentId: string): CommentInterface[] => {
     return commentsMap[parentId];
   };
 
   return (
     <div className="flex flex-col space-y-6">
-      {comments.map((comment) => {
-        if (!comment.parent_id) {
-          const date = new Date(comment.timestamp);
-          return (
-            <div key={comment.id} className="flex flex-col space-y-4 relative">
-              <div className="self-center text-secondary-700  text-sm">
-                <span>
-                  {date.toLocaleDateString("en-US", {
-                    weekday: "long",
-                  })}
-                  ,{" "}
-                </span>
-                <span>
-                  {date.toLocaleDateString("de-DE", {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric",
-                  })}
-                </span>
-              </div>
-              <SingleComment getReplies={getReplies} comment={comment} />
-            </div>
-          );
-        }
-      })}
+      {comments?.map(
+        (comment) =>
+          !comment.parent_id && (
+            <ParentComment
+              key={comment.id}
+              comment={comment}
+              getReplies={getReplies}
+            />
+          )
+      )}
     </div>
   );
 };
