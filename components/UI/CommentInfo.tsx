@@ -24,7 +24,10 @@ const CommentInfo: React.FC<CommentInfoProps> = ({
     <div className="flex space-x-2 items-center">
       <time className="text-secondary-700 text-sm">{time}</time>
       <BsDot className="text-secondary-700 w-2 h-2" />
-      <button onClick={onFormOpen} className="text-primary-400 text-sm">
+      <button
+        onClick={onFormOpen}
+        className="text-primary-400 text-sm font-medium"
+      >
         {!isFormOpen
           ? `Reply ${numberOfReplies ? `(${numberOfReplies})` : ""}`
           : "Close"}

@@ -18,7 +18,7 @@ const CommentLayout: React.FC<CommentLayoutProps> = ({
 
   return (
     <article>
-      <div className="flex space-x-4 pt-8">
+      <div className="flex space-x-4 pt-6">
         <Image
           src={comment.author.picture}
           alt={`Picture of ${comment.author.name}`}

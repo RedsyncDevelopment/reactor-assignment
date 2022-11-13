@@ -29,17 +29,19 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
 
   return (
     <div className="flex flex-col">
-      {comments?.map(
-        (comment) =>
-          // render top comments (comments without parent id)
-          !comment.parent_id && (
-            <Comment
-              key={comment.id}
-              comment={comment}
-              getReplies={getReplies}
-            />
-          )
-      )}
+      {comments
+        .sort((a, b) => a.timestamp - b.timestamp)
+        .map(
+          (comment) =>
+            // render top comments (comments without parent id)
+            !comment.parent_id && (
+              <Comment
+                key={comment.id}
+                comment={comment}
+                getReplies={getReplies}
+              />
+            )
+        )}
     </div>
   );
 };

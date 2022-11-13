@@ -14,17 +14,19 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment }) => {
       <h1 className="text-secondary-900 font-semibold">
         {comment.author.name}
       </h1>
-      {commentText.map((line, idx) =>
-        line.match(urlRegex) ? (
-          <a key={idx} className="text-primary-400 underline" href={line}>
-            {line}
-          </a>
-        ) : (
-          <p key={idx} className="text-secondary-700">
-            {line}
-          </p>
-        )
-      )}
+      <p className="font-medium">
+        {commentText.map((line, idx) =>
+          line.match(urlRegex) ? (
+            <a key={idx} className="text-primary-400 underline" href={line}>
+              {line}
+            </a>
+          ) : (
+            <p key={idx} className="text-secondary-700">
+              {line}
+            </p>
+          )
+        )}
+      </p>
     </div>
   );
 };
