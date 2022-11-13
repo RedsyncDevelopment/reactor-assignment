@@ -23,14 +23,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<HomeProps> = ({ initialComments }) => {
   const { comments, setComments } = useContext(CommentsContext);
-  const isVisible = true;
 
   useEffect(() => {
     setComments(initialComments);
   }, [initialComments, setComments]);
 
   return (
-    <div>
+    <>
       <Head>
         <title>Comments</title>
         <meta name="description" content="Reactor Assignment - Comments App" />
@@ -49,8 +48,7 @@ const Home: NextPage<HomeProps> = ({ initialComments }) => {
           </div>
         </div>
       </main>
-      <footer></footer>
-    </div>
+    </>
   );
 };
 

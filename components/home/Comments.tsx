@@ -1,18 +1,16 @@
 import React, { useMemo } from "react";
-import { CommentInterface } from "../../types";
-import ParentComment from "./ParentComment";
+import { CommentInterface, CommentMapInterface } from "../../types";
+import Comment from "./Comment";
 
 interface CommentsProps {
   comments: CommentInterface[];
 }
 
 const Comments: React.FC<CommentsProps> = ({ comments }) => {
-  // console.log(comments);
-
   // create comments Map with nested comments
   const commentsMap = useMemo(() => {
-    const map: any = {};
-    if (!comments) return [];
+    const map: CommentMapInterface = {};
+    if (!comments) return {};
     comments.forEach((comment) => {
       // if comment has parent_id -> create new array if it doesn't already exist, if exists -> push that comment to array
       if (comment.parent_id) {
@@ -30,11 +28,12 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
   };
 
   return (
-    <div className="flex flex-col space-y-6">
+    <div className="flex flex-col">
       {comments?.map(
         (comment) =>
+          // render top comments (comments without parent id)
           !comment.parent_id && (
-            <ParentComment
+            <Comment
               key={comment.id}
               comment={comment}
               getReplies={getReplies}

@@ -10,3 +10,7 @@ export interface CommentInterface {
   text: string;
   timestamp: number;
 }
+
+export interface CommentMapInterface {
+  [key: string]: CommentInterface[];
+}
