@@ -41,6 +41,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
     <form
       onSubmit={handleSubmit}
       className="bg-white rounded-lg p-2 border-[1px] border-secondary-400 flex items-center justify-between"
+      id="comment-form"
     >
       <Button type="button">
         <AiOutlinePlus className="w-6 h-6" />
@@ -49,6 +50,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
         placeholder="Start typing your comment..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        id="comment-input"
       />
 
       <Button id="submit-button" type="submit">
