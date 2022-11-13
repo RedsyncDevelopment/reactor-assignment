@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { CommentInterface } from "../../types";
 import { getFormatedDate } from "../../utils/helpers";
 import CommentLayout from "../UI/CommentLayout";
@@ -14,8 +14,6 @@ const Comment: React.FC<CommentProps> = ({ comment, getReplies }) => {
   const dateToDispaly = getFormatedDate(comment.timestamp);
   // find childComments
   const childComments = getReplies(comment.id);
-
-  const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
 
   return (
     <section className="flex flex-col relative">

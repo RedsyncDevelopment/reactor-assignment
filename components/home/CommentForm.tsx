@@ -52,7 +52,6 @@ const CommentForm: React.FC<CommentFormProps> = ({
         onChange={(e) => setText(e.target.value)}
         id="comment-input"
       />
-
       <Button id="submit-button" type="submit">
         <TbSend className="w-6 h-6" />
         <span>Send message</span>

@@ -23,6 +23,7 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
     return map;
   }, [comments]);
 
+  // create function to return child comments
   const getReplies = (parentId: string): CommentInterface[] => {
     return commentsMap[parentId];
   };
