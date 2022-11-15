@@ -19,7 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "tests/components/home/Comment.test.js"
+    "__tests__/components/home/Comment.test.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Comment from "../Comment";
+import Comment from "../components/home/Comment";
 
 describe("<Comment />", () => {
   let comment, getReplies;

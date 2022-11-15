@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import CommentForm from "../CommentForm";
+import CommentForm from "../components/home/CommentForm";
 
 describe("<CommentForm />", () => {
   test("should create new comment on button click", async () => {
